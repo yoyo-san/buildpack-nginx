@@ -13,8 +13,22 @@ http {
   server {
     listen <%= ENV["PORT"] %>;
     server_name  _;
-    root /app/www/public;
-    try_files $uri /index.html;
-    index /index.html;
+    
+    location ~* \.html$ {
+      root /app/www/public;
+      expires 5m;
+      try_files $uri /index.html;
+    }
+    location / {
+      root /app/www/public;
+      try_files $uri /index.html;
+      expires 1d;
+    }
+
+    location /admin {
+      alias /app/www/public;
+      try_files $uri /admin.html;
+      expires 1d;
+    }
   }
 }
