@@ -128,3 +128,4 @@ erb /app/nginx/nginx.conf.erb > /app/nginx/nginx.conf
 exec nginx -p /app/nginx -c /app/nginx/nginx.conf
 EOF
 chmod +x "$BUILD_DIR/start_nginx"
+mv /app/.tmp /app/www/
