@@ -4,7 +4,7 @@ pid nginx.pid;
 daemon off;
 
 events {
-  worker_connections 768;
+  worker_connections 4096;
 }
 
 http {
@@ -13,7 +13,7 @@ http {
   server {
     listen <%= ENV["PORT"] %>;
     server_name  _;
-    root /app/www;
+    root /app/.tmp;
     index index.html;
   }
 }
