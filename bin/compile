@@ -124,11 +124,6 @@ cp conf/mime.types $BUILD_DIR/nginx/mime.types
 cat <<EOF >"$BUILD_DIR/start_nginx"
 #!/usr/bin/env bash
 rm -f /app/nginx/nginx.conf
-if [ -e /app/www/public ]; then # Version < 3.x
-  cp -r /app/.tmp/* /app/www/public/
-else
-  cp -r /app/.tmp/* /app/www/client/
-fi
 erb /app/nginx/nginx.conf.erb > /app/nginx/nginx.conf
 exec nginx -p /app/nginx -c /app/nginx/nginx.conf
 EOF
