@@ -27,7 +27,7 @@ http {
 
     location /admin {
       root /app/www/dist;
-      try_files $uri /admin/index.html;
+      try_files $uri admin.html;
       expires 1d;
     }
   }
